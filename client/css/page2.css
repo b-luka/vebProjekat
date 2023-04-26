@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.imgbg_page2 img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2000;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+  
+.nav ul { 
+    margin: auto;
+    float: right;
+    position: relative;
+    top: -70px;
+    font-size: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+  
+.nav li {
+    display: inline-block;
+    width: 150px;
+}
+  
+.nav a {
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    font-size: 1.2em;
+    color: white;
+}
+  
+.nav li:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nav a:hover {
+    color: darkred;
+}
+
+.logo img {
+    width: 60px;
+}
+
+.footer {
+    background-color: #000;
+    height: 50px;
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-width: 100px;
+    z-index: 1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.dropdown_content p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.lang_en:hover, .lang_sr:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    margin-top: 100vh;
+}
+
+.wiki {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    margin-top: 500px;
+}
