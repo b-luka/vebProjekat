@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 const app = express();
 app.use(express.json());
@@ -35,7 +35,7 @@ app.get("/indexTextSR", (req, res) => {
         res.send(result);
     });
 });
-
+/*
 app.post("/createUser", async (req, res) => {
 	const user = req.body.username;
 	const hashedPassword = await bcrypt.hash(req.body.psswrd, 10);
@@ -95,7 +95,7 @@ app.post("/login", (req, res) => {
 		});
 	});
 });
-
+*/
 app.listen(8008, () => {
     console.log("Server running on port 8008");
 });
