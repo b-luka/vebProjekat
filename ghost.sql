@@ -34,3 +34,33 @@ create table accounts (
 );
 
 insert into accounts (username, passwd) values ("admin", "admin");
+
+create table media_1_html (
+	id int unsigned not null auto_increment,
+    img longblob not null,
+    media_type varchar(10) not null,
+    html_id varchar(50) not null,
+    primary key (id)
+);
+
+create table media_1_css (
+	id int unsigned not null auto_increment,
+    img mediumblob not null,
+    media_type varchar(10) not null,
+    html_id varchar(50) not null,
+    primary key (id)
+);
+
+-- set @test = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\bg1.mp4');
+-- select @test;
+
+insert into media_1_html(img, media_type, html_id) values
+(LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\bg1.mp4'), "mp4", "videobg_src"),
+(load_file("C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\logo.png"), "png", "logo_img"),
+(load_file("C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\impera.webp"), "webp", "album_img");
+
+insert into media_1_css(img, media_type, html_id) values
+(load_file("C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\impera_bg.png"), "png", "album_div");
+
+select to_base64(img) as img, media_type, html_id from media_1_html;
+select to_base64(img) as img, media_type, html_id from media_1_css;
