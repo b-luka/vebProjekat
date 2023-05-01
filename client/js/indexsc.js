@@ -47,6 +47,20 @@ const getTextSR = async () => {
     return data;
 }
 
+const getBlobsHTML = async () => {
+    const res = await fetch("http://localhost:8008/blobs1html");
+    const data = await res.json();
+
+    return data;
+}
+
+const getBlobsCSS = async () => {
+    const res = await fetch("http://localhost:8008/blobs1css");
+    const data = await res.json();
+
+    return data;
+}
+
 var language = "en";
 sessionStorage.setItem("lang", language);
 
@@ -81,4 +95,24 @@ getTextEN().then(texts => {
         document.getElementById(text.div_id).innerHTML = text.content;
         console.log(text);
     })
+});
+
+getBlobsHTML().then(rows => {
+    rows.forEach(row => {
+        if (row.media_type == "mp4") {
+            document.getElementById(row.html_id).setAttribute('src', "data:video/mp4;charset=utf-8;base64, " + row.img);
+        } else if (row.media_type == "png") {
+            document.getElementById(row.html_id).setAttribute('src', "data:image/png;charset=utf-8;base64, " + row.img);
+        } else if (row.media_type == "webp") {
+            document.getElementById(row.html_id).setAttribute('src', "data:image/webp;charset=utf-8;base64, " + row.img);
+        }
+    });
+});
+
+getBlobsCSS().then(rows => {
+    rows.forEach(row => {
+        console.log(row);
+        var img = row.img.replace(/(\r\n|\n|\r)/gm, "");
+        document.getElementById("album_div").style = "background-image: url('data:image/png;charset=utf-8;base64, " + img + "')";
+    });
 });
