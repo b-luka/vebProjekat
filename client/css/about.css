@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .imgbg_page2 img {
@@ -9,7 +10,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     object-fit: cover;
     z-index: -2000;
 }
@@ -95,12 +95,21 @@
 }
 
 .footer {
-    margin-top: 100vh;
+    margin-top: 40px;
 }
 
 .wiki {
     color: #fff;
-    width: 100%;
+    width: 80%;
     text-align: center;
-    margin-top: 500px;
+    margin:auto;
+    margin-top: 300px;
+}
+
+.lang_en{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lang_sr{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -19,7 +19,7 @@ conn.connect((err) => {
     console.log("Connected to database...");
 });
 
-app.get("/indexTextEN", (req, res) => {
+/*app.get("/indexTextEN", (req, res) => {
     let query = "select div_id, content from text_en_1";
     conn.query(query, (err, result) => {
         if (err) throw err;
@@ -45,6 +45,22 @@ app.get("/blobs1html", (req, res) => {
 
 app.get("/blobs1css", (req, res) => {
     let query = "select to_base64(img) as img, media_type, html_id from media_1_css";
+    conn.query(query, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});*/
+
+app.get("/aboutTextEn", (req, res) => {
+    let query = "select div_id, content from text_en_2";
+    conn.query(query, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get("/aboutTextSR", (req, res) => {
+    let query = "select div_id, content from text_sr_2";
     conn.query(query, (err, result) => {
         if (err) throw err;
         res.send(result);
