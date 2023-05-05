@@ -140,3 +140,23 @@ insert into text_en_2(div_id,content) values ("AboutPs1",'Ghost is a Swedish roc
                                              
 insert into text_sr_2(div_id,content) values ("AboutPs1",'Ghost (транскр. Гоуст), такође познат као Ghost B.C. је шведски хеви метал бенд основан 2006. године у Линћепингу. 2010. године бенд је објавио демо који је садржао три песме, затим први сингл под називом "Elizabeth" који ће следити њихов деби албум Opus Eponymous са песмом "Ritual" која је касније од стране британског магазина Kerrang! изабрана за једну од "Педесет најзлобнијих песама свих времена". Овај албум је номинован за Греми награду што је изузетно утицало на њихову популарност. Њихов други албум, Infestissumam, објављен 2013. године, дебитовао је на првом месту у Шведској и освојио Греми награду за најбољи хард рок/хеви метал албум. Infestissumam је имао велики утицај на тадашње стање метал жанра музике и инспирисао је многе друге бендове и уметнике.[1] Трећи албум, Meliora, са огромним бројем продатих копија и великим признањем критичара достигао још једном прво место у Шведској и осмо место у Сједињеним Америчким Државамa.Сингл "Cirice" са овог албума је донела бенду Греми за "Најбољи метал перформанс" 2016. године. Први сингл њиховог албума, Prequelle, "Rats" је заузео и држао прво место на Mainstream Rock Songs чарту магазина Billboard седам недеља. Након тога, други сингл "Dance Macabre" је преузео исто место и задржао га две недеље.'),
                                              ("AboutPs2",'Ghost је најпознатији по томе што је мистериозан бенд. Сви чланови сем певача носе идентичне костиме са маскама које им прекривају лица, названи су Nameless Ghouls (транскр. Нејмлес Гулс), њихов идентитет је непознат и верује се да се стално мењају.[2] Тобијас Форџ, главни вокал бенда, је скривао свој идентитет иза лика под именом "Папа Еремитус" који је испратио бенд до 2017. године када су бивши чланови бенда покренули тужбу против Тобијаса. Папа Еремитус је костим са простетичком маском и шминком. Појава Папе Еремитуса се мењала кроз године и албуме, сваки Папа је имао свој аутентичан изглед и назив.[3]');
+
+create table text_en_3 (
+	id int unsigned not null auto_increment,
+    div_id varchar(20) not null,
+    content text not null,
+    primary key (id)
+);
+
+create table text_sr_3 (
+	id int unsigned not null auto_increment,
+    div_id varchar(20) not null,
+    content text not null,
+    primary key (id)
+);
+
+insert into text_en_3(div_id,content) values ("Naslov","CONTACT US"),("ContactPs1","UK, Europe and the Rest Of the World\nUnited Kingdom\nGate B, St George`s House\nCape Road\nWarwick\nCV34 5DJ\nUnited Kingdom\nTel: +44 20 8106 2494"),("ContactPs2","North America\n13 Scenic Drive, Apt T\nCroton on Hudson,\nNew York, 10520\nUnited States of America\nTel: +1 (717) 537-0565\n");
+select * from text_en_3;
+
+insert into text_sr_3(div_id,content) values ("Naslov","KONTAKTIRAJTE NAS"),("ContactPs1","Velika Britanija, Evropa i ostatak sveta\nUjedinjeno Kraljevstvo\nKapija B, Kuća Svetog Đorđa\nCape Road\nVorvik\nCV34 5DJ\nUjedinjeno Kraljevstvo\nTel: +44 20 8106 2494"),("ContactPs2","Severna Amerika\n13 Scenic Drive, Apt T\nCroton on Hudson,\nNjujork, 10520\nSjedinjene Američke Države\nTel: +1 (717) 537-0565\n");
+select * from text_sr_3;
