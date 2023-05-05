@@ -5,6 +5,8 @@ const mysql = require("mysql");
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 const params = {
     host: "localhost",
@@ -47,6 +49,32 @@ app.get("/blobs1css", (req, res) => {
     let query = "select to_base64(img) as img, media_type, html_id from media_1_css";
     conn.query(query, (err, result) => {
         if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get("/storeItemsENLoad", (req, res) => {
+    let query = "select to_base64(img) as img, item, stock, price, item_name, item_description from item_inventory join items_en on item_inventory.id = items_en.item";
+    conn.query(query, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post("/storeItemsEN", (req, res) => {
+    let query = "select to_base64(img) as img, item, stock, price, item_name, item_description from item_inventory join items_en on item_inventory.id = items_en.item where item_name like ?";
+    conn.query(query, ["%" + req.body.search + "%"], (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
+app.post("/storeItemsBuy", (req, res) => {
+    let query = "insert into sales(time_sold, copies_sold, item) values (now(), 1, ?);";
+    conn.query(query, [req.body.item_id], (err, result) => {
+        if (err) throw err;
+        console.log(result);
         res.send(result);
     });
 });
