@@ -67,6 +67,23 @@ app.get("/aboutTextSR", (req, res) => {
     });
 });
 
+app.get("/contactTextEn", (req, res) => {
+    let query = "select div_id, content from text_en_3";
+    conn.query(query, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get("/contactTextSR", (req, res) => {
+    let query = "select div_id, content from text_sr_3";
+    conn.query(query, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+
 app.listen(8008, () => {
     console.log("Server running on port 8008");
 });
