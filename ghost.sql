@@ -160,3 +160,40 @@ select * from text_en_3;
 
 insert into text_sr_3(div_id,content) values ("Naslov","KONTAKTIRAJTE NAS"),("ContactPs1","Velika Britanija, Evropa i ostatak sveta\nUjedinjeno Kraljevstvo\nKapija B, Kuća Svetog Đorđa\nCape Road\nVorvik\nCV34 5DJ\nUjedinjeno Kraljevstvo\nTel: +44 20 8106 2494"),("ContactPs2","Severna Amerika\n13 Scenic Drive, Apt T\nCroton on Hudson,\nNjujork, 10520\nSjedinjene Američke Države\nTel: +1 (717) 537-0565\n");
 select * from text_sr_3;
+
+create table text_en_4 (
+	id int unsigned not null auto_increment,
+    div_id varchar(20) not null,
+    content text not null,
+    primary key (id)
+);
+
+create table text_sr_4 (
+	id int unsigned not null auto_increment,
+    div_id varchar(20) not null,
+    content text not null,
+    primary key (id)
+);
+
+insert into text_en_4(div_id,content) values ("Naslov","Tours"),("datum1","May 23 | Zénith de Toulouse"),("grad1","Toulouse, France"),
+																("datum2","May 25 | Le Liberte"),("grad2","Rennes, France"),
+                                                                ("datum3","May 26 | Zénith de Lille"),("grad3","Lille, France"),
+                                                                ("datum4","May 28 | Zenith of Strasbourg"),("grad4","Strasbourg, France"),
+                                                                ("datum5","May 29 | Ippodromo del Galoppo di San Siro"),("grad5","Milano, Italy"),
+                                                                ("datum6","May 30 | Palais Nikaïa"),("grad6","Nice, France"),
+                                                                ("datum7","June 1 | Primavera Sound 2023"),("grad7","Barcelona, Spain"),
+																("datum8","June 3 | Zenith Nantes Metropole"),("grad8","Saint-herblain, France"),
+                                                                ("datum9","June 4 | AFAS Live"),("grad9","Amsterdam, Netherlands"),
+                                                                ("datum10","June 6 | Velodrom"),("grad10","Berlin, Germany");
+
+												
+insert into text_sr_4(div_id,content) values ("Naslov","Ture"),("datum1","Maj 23 | Zénith de Toulouse"),("grad1","Tuluza, Francuska"),
+																("datum2","Maj 25 | Le Liberte"),("grad2","Ren, Francuska"),
+                                                                ("datum3","Maj 26 | Zénith de Lille"),("grad3","Lil, Francuska"),
+                                                                ("datum4","Maj 28 | Zenith of Strasbourg"),("grad4","Strazburg, Francuska"),
+                                                                ("datum5","Maj 29 | Ippodromo del Galoppo di San Siro"),("grad5","Milano, Italija"),
+                                                                ("datum6","Maj 30 | Palais Nikaïa"),("grad6","Nica, Francuska"),
+                                                                ("datum7","Jun 1 | Primavera Sound 2023"),("grad7","Barselona, Španije"),
+																("datum8","Jun 3 | Zenith Nantes Metropole"),("grad8","Sent Erblen, Francuska"),
+                                                                ("datum9","Jun 4 | AFAS Live"),("grad9","Amsterdam, Holandija"),
+                                                                ("datum10","Jun 6 | Velodrom"),("grad10","Berlin, Nemačka");
