@@ -337,12 +337,15 @@ input {
 
 .buy_item_description {
     font-size: 1.5em;
+    max-width: 50%;
+    margin-left: 450px;
     margin-bottom: 140px;
 }
 
 .buy_item_price {
     font-size: 1.2em;
     margin-bottom: 20px;
+    margin-left: 190px;
     text-align: center;
 }
 
