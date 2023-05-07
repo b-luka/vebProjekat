@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.imgbg_page2 img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    z-index: -2000;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+  
+.nav ul { 
+    margin: auto;
+    float: right;
+    position: relative;
+    top: -70px;
+    font-size: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+  
+.nav li {
+    display: inline-block;
+    width: 150px;
+}
+  
+.nav a {
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    font-size: 1.2em;
+    color: white;
+}
+  
+.nav li:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nav a:hover {
+    color: darkred;
+}
+
+.logo img {
+    width: 60px;
+}
+
+.footer {
+    background-color: #000;
+    height: 50px;
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-width: 100px;
+    z-index: 1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.dropdown_content p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.lang_en:hover, .lang_sr:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    margin-top: 40px;
+}
+
+.tours {
+    color: #fff;
+    width: 80%;
+    margin:auto;
+    margin-top: 100px;
+}
+
+.NaslovDiv{
+    font-size: 2em;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tura{
+    display: flex;
+    width: 100%;
+    border-top: 2px solid rgb(100, 0, 0);
+    padding: 20px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tura:last-child{
+    border-bottom: 2px solid rgb(100, 0, 0);
+}
+
+.lang_en{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lang_sr{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.datumMesto{
+    text-align: left;
+    width: 100%;
+    color: #ac9a5c;
+    font-weight: bold;
+}
+
+.grad{
+    width: 100%;
+    text-align: right;
+    color: #cf2e2e;
+    font-weight: bold;
+}
+
+.tura {
+    transition: 0.2s background-color;
+}
+
+.tura:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

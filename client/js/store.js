@@ -16,6 +16,19 @@ document.getElementById('lang_sr').addEventListener('click', () => {
 
 let buy_id = 0;
 
+const getLogo = async () => {
+    const res = await fetch("http://localhost:8008/logo");
+    const data = await res.json();
+
+    return data;
+}
+
+getLogo().then(rows => {
+    rows.forEach(row => {
+        document.getElementById(row.html_id).setAttribute('src', "data:image/png;charset=utf-8;base64, " + row.img);
+    });
+});
+
 const getBlobs = async () => {
     const res = await fetch("http://localhost:8008/blobs4html");
     const data = await res.json();
@@ -191,8 +204,3 @@ let item_array = document.getElementsByClassName("store_item");
 for (let item of item_array) {
     console.log(item);
 }
-
-document.getElementById("buy_close").addEventListener("click", () => {
-    document.getElementById("buy_menu").style.display = "none";
-    console.log("alooo");
-});
