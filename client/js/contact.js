@@ -113,4 +113,8 @@ document.getElementById("submitMessage").addEventListener("click", () => {
             console.log(json);
         });
     }
+
+    document.getElementById("usernameInput").value = "";
+    document.getElementById("emailInput").value = "";
+    document.getElementById("messageInput").value = "";
 });
