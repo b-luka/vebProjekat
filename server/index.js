@@ -54,7 +54,7 @@ app.get("/blobs1css", (req, res) => {
 });
 
 app.get("/storeItemsENLoad", (req, res) => {
-    let query = "select to_base64(img) as img, item, stock, price, item_name, item_description from item_inventory join items_en on item_inventory.id = items_en.item";
+    let query = "select id, to_base64(img) as img, item, stock, price, item_name, item_description from item_inventory join items_en on item_inventory.id = items_en.item";
     conn.query(query, (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -88,10 +88,11 @@ app.post("/storeItemsSR", (req, res) => {
 });
 
 app.post("/storeItemsBuy", (req, res) => {
-    let query = "insert into sales(time_sold, copies_sold, item) values (now(), 1, ?);";
-    conn.query(query, [req.body.item_id], (err, result) => {
+    let query = "insert into sales(time_sold, copies_sold, item) values (now(), ?)";
+    let values = [[1, req.body.item_id]];
+    conn.query(query, values, (err, result) => {
         if (err) throw err;
-        //console.log(result);
+        console.log("Affected rows: " + result.affectedRows);
         res.send(result);
     });
 });
@@ -180,6 +181,16 @@ app.get("/blobs5html", (req, res) => {
     let query = "select to_base64(img) as img, media_type, html_id from media_5_html";
     conn.query(query, (err, result) => {
         if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post("/postMessage", (req, res) => {
+    let query = "insert into mail(username, email, message, time_sent) values (?, now())";
+    let values = [[req.body.username, req.body.email, req.body.message]];
+    conn.query(query, values, (err, result) => {
+        if (err) throw err;
+        console.log("Affected rows: " + result.affectedRows);
         res.send(result);
     });
 });

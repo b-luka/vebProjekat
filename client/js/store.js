@@ -73,29 +73,66 @@ if (lang == "en") {
             html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img + "\">";
             html += "<p class=\"item_description\">" + item.item_description + "</p>";
             html += "<p class=\"stock_display\">Stock: " + item.stock + "</p>";
-            html += "<button class=\"buy_now\">Buy now</button>";
+            html += "<button class=\"buy_now\" id=\"buy_now_btn_" + item.id + "\">Buy now</button>";
             if (item.stock <= 0) html += "<div class=\"out_of_stock_overlay\">OUT OF STOCK</div>";
+
+            // test
+            if (item.stock > 0) {
+                html += "<div class=\"buy_menu\" id=\"buy_menu_" + item.id + "\">";
+                html += "<div class=\"buy_display\" id=\"buy_display_" + item.id + "\">";
+                html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img +"\">";
+                html += "<button class=\"buy_close\" id=\"buy_close\">X</button>";
+                html += "<div class=\"buy_float_right\">";
+                html += "<p class=\"buy_item_name\">" + item.item_name + "</p>";
+                html += "<p class=\"buy_item_description\">" + item.item_description + "</p>";
+                html += "<p class=\"buy_item_price\">" + item.price + "$</p>";
+                html += "<button class=\"buy_btn\" id=\"buy_btn_" + item.id + "\">BUY NOW</button></div></div></div>";
+            }
+
             html += "</div>";
-    
             document.getElementById("store_items").innerHTML = html;
-            let item_array = document.getElementsByClassName("store_item");
-            for (let elem of item_array) {
-                elem.getElementsByClassName("buy_now")[0].addEventListener("click", () => {
-                    document.getElementById("buy_menu").style.display = "block";
-                    let html2 = "";
-                    html2 += "<div class=\"buy_display\">" +
-                    "<img src=\"data:image/png;charset=utf-8;base64, " + item.img +"\">" +
-                    "<button class=\"buy_close\" id=\"buy_close\">X</button>" +
-                    "<div class=\"buy_float_right\">" +
-                    "<p class=\"buy_item_name\">" + item.item_name + "</p>" +
-                    "<p class=\"buy_item_description\">" + item.item_description + "</p>" +
-                    "<p class=\"buy_item_price\">" + item.price + "$</p>" +
-                    "<button class=\"buy_btn\">BUY NOW</button></div></div>";
-                    document.getElementById("buy_menu").innerHTML = html2;
-                    console.log(document.getElementById("buy_close"));
-                    document.getElementById("buy_close").addEventListener("click", () => {
-                        document.getElementById("buy_menu").style.display = "none";
+        });
+
+        items.forEach(item => {
+            document.getElementById("buy_now_btn_" + item.id).addEventListener("click", () => {
+                console.log(document.getElementById("buy_menu_" + item.id));
+                document.getElementById("buy_menu_" + item.id).style.display = "block";
+            });
+        });
+
+        items.forEach(item => {
+            let btnArray = document.getElementsByClassName("buy_close");
+            let divArray = document.getElementsByClassName("buy_menu");
+            for (let i = 0; i < btnArray.length; i++) {
+                for (let j = 0; j < divArray.length; j++) {
+                    btnArray[i].addEventListener("click", () => {
+                        divArray[j].style.display = "none";
                     });
+                }
+            }
+        });
+
+        items.forEach(item => {
+            if (item.stock > 0) {
+                document.getElementById("buy_btn_" + item.id).addEventListener("click", () => {
+                    console.log(item.id);
+
+                    const data = {
+                        item_id: item.id
+                    };
+                
+                    const options = {
+                        method: "post",
+                        body: JSON.stringify(data),
+                        headers: {"Content-type":"application/json; charset=UTF-8"}
+                    };
+
+                    fetch("http://localhost:8008/storeItemsBuy", options)
+                    .then(res => res.json)
+                    .then(json => {
+                        console.log("bought item");
+                        console.log(json);
+                    })
                 });
             }
         });
@@ -113,30 +150,67 @@ if (lang == "sr") {
             html += "<p class=\"item_name\">" + item.item_name + "</p>";
             html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img + "\">";
             html += "<p class=\"item_description\">" + item.item_description + "</p>";
-            html += "<p class=\"stock_display\">Стање: " + item.stock + "</p>";
-            html += "<button class=\"buy_now\">Купи</button>";
-            if (item.stock <= 0) html += "<div class=\"out_of_stock_overlay\">НЕМА НА СТАЊУ</div>";
+            html += "<p class=\"stock_display\">Stock: " + item.stock + "</p>";
+            html += "<button class=\"buy_now\" id=\"buy_now_btn_" + item.id + "\">Buy now</button>";
+            if (item.stock <= 0) html += "<div class=\"out_of_stock_overlay\">OUT OF STOCK</div>";
+
+            // test
+            if (item.stock > 0) {
+                html += "<div class=\"buy_menu\" id=\"buy_menu_" + item.id + "\">";
+                html += "<div class=\"buy_display\" id=\"buy_display_" + item.id + "\">";
+                html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img +"\">";
+                html += "<button class=\"buy_close\" id=\"buy_close\">X</button>";
+                html += "<div class=\"buy_float_right\">";
+                html += "<p class=\"buy_item_name\">" + item.item_name + "</p>";
+                html += "<p class=\"buy_item_description\">" + item.item_description + "</p>";
+                html += "<p class=\"buy_item_price\">" + item.price + "$</p>";
+                html += "<button class=\"buy_btn\" id=\"buy_btn_" + item.id + "\">BUY NOW</button></div></div></div>";
+            }
+
             html += "</div>";
-    
             document.getElementById("store_items").innerHTML = html;
-            let item_array = document.getElementsByClassName("store_item");
-            for (let elem of item_array) {
-                elem.getElementsByClassName("buy_now")[0].addEventListener("click", () => {
-                    document.getElementById("buy_menu").style.display = "block";
-                    let html2 = "";
-                    html2 += "<div class=\"buy_display\">" +
-                    "<img src=\"data:image/png;charset=utf-8;base64, " + item.img +"\">" +
-                    "<button class=\"buy_close\" id=\"buy_close\">X</button>" +
-                    "<div class=\"buy_float_right\">" +
-                    "<p class=\"buy_item_name\">" + item.item_name + "</p>" +
-                    "<p class=\"buy_item_description\">" + item.item_description + "</p>" +
-                    "<p class=\"buy_item_price\">" + item.price + "$</p>" +
-                    "<button class=\"buy_btn\">Купи сада</button></div></div>";
-                    document.getElementById("buy_menu").innerHTML = html2;
-                    console.log(document.getElementById("buy_close"));
-                    document.getElementById("buy_close").addEventListener("click", () => {
-                        document.getElementById("buy_menu").style.display = "none";
+        });
+
+        items.forEach(item => {
+            document.getElementById("buy_now_btn_" + item.id).addEventListener("click", () => {
+                console.log(document.getElementById("buy_menu_" + item.id));
+                document.getElementById("buy_menu_" + item.id).style.display = "block";
+            });
+        });
+
+        items.forEach(item => {
+            let btnArray = document.getElementsByClassName("buy_close");
+            let divArray = document.getElementsByClassName("buy_menu");
+            for (let i = 0; i < btnArray.length; i++) {
+                for (let j = 0; j < divArray.length; j++) {
+                    btnArray[i].addEventListener("click", () => {
+                        divArray[j].style.display = "none";
                     });
+                }
+            }
+        });
+
+        items.forEach(item => {
+            if (item.stock > 0) {
+                document.getElementById("buy_btn_" + item.id).addEventListener("click", () => {
+                    console.log(item.id);
+
+                    const data = {
+                        item_id: item.id
+                    };
+                
+                    const options = {
+                        method: "post",
+                        body: JSON.stringify(data),
+                        headers: {"Content-type":"application/json; charset=UTF-8"}
+                    };
+
+                    fetch("http://localhost:8008/storeItemsBuy", options)
+                    .then(res => res.json)
+                    .then(json => {
+                        console.log("bought item");
+                        console.log(json);
+                    })
                 });
             }
         });
@@ -144,63 +218,183 @@ if (lang == "sr") {
     });
 }
 
-document.getElementById('search').addEventListener("input", () => {
-    const data = {
-        search: document.getElementById('search').value
-    };
+if (lang == "en") {
+    document.getElementById('search').addEventListener("input", () => {
+        const data = {
+            search: document.getElementById('search').value
+        };
 
-    const options = {
-        method: "post",
-        body: JSON.stringify(data),
-        headers: {"Content-type":"application/json; charset=UTF-8"}
-    };
+        const options = {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {"Content-type":"application/json; charset=UTF-8"}
+        };
 
 
-    fetch("http://localhost:8008/storeItemsEN", options)
-    .then(res => res.json()) //.json())
-    .then(json => {
-        //json => console.log(json);
-        let html = "";
-        json.forEach(item => {
-            html += "<div class=\"store_item";
-            if (item.stock <= 0) html += " out_of_stock";
-            html += "\">";
-            html += "<p class=\"item_name\">" + item.item_name + "</p>";
-            html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img + "\">";
-            html += "<p class=\"item_description\">" + item.item_description + "</p>";
-            html += "<p class=\"stock_display\">Stock: " + item.stock + "</p>";
-            html += "<button class=\"buy_now\">Buy now</button>";
-            if (item.stock <= 0) html += "<div class=\"out_of_stock_overlay\">OUT OF STOCK</div>";
-            html += "</div>";   
-        });
-        
-        document.getElementById("store_items").innerHTML = html;
-        let item_array = document.getElementsByClassName("store_item");
-        for (let elem of item_array) {
-            elem.getElementsByClassName("buy_now")[0].addEventListener("click", () => {
-                document.getElementById("buy_menu").style.display = "block";
-                let html2 = "";
-                html2 += "<div class=\"buy_display\">" +
-                "<img src=\"data:image/png;charset=utf-8;base64, " + item.img +"\">" +
-                "<button class=\"buy_close\" id=\"buy_close\">close</button>" +
-                "<div class=\"buy_float_right\">" +
-                "<p class=\"buy_item_name\">" + item.item_name + "</p>" +
-                "<p class=\"buy_item_description\">" + item.item_description + "</p>" +
-                "<p class=\"buy_item_price\">" + item.price + "$</p>" +
-                "<button class=\"buy_btn\">BUY NOW</button></div></div>";
-                document.getElementById("buy_menu").innerHTML = html2;
-                console.log(document.getElementById("buy_close"));
-                document.getElementById("buy_close").addEventListener("click", () => {
-                    document.getElementById("buy_menu").style.display = "none";
+        fetch("http://localhost:8008/storeItemsEN", options)
+        .then(res => res.json()) //.json())
+        .then(json => {
+            let html = "";
+            json.forEach(item => {
+                html += "<div class=\"store_item";
+                if (item.stock <= 0) html += " out_of_stock";
+                html += "\">";
+                html += "<p class=\"item_name\">" + item.item_name + "</p>";
+                html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img + "\">";
+                html += "<p class=\"item_description\">" + item.item_description + "</p>";
+                html += "<p class=\"stock_display\">Stock: " + item.stock + "</p>";
+                html += "<button class=\"buy_now\" id=\"buy_now_btn_" + item.item + "\">Buy now</button>";
+                if (item.stock <= 0) html += "<div class=\"out_of_stock_overlay\">OUT OF STOCK</div>";
+
+                if (item.stock > 0) {
+                    html += "<div class=\"buy_menu\" id=\"buy_menu_" + item.item + "\">";
+                    html += "<div class=\"buy_display\" id=\"buy_display_" + item.id + "\">";
+                    html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img +"\">";
+                    html += "<button class=\"buy_close\" id=\"buy_close\">X</button>";
+                    html += "<div class=\"buy_float_right\">";
+                    html += "<p class=\"buy_item_name\">" + item.item_name + "</p>";
+                    html += "<p class=\"buy_item_description\">" + item.item_description + "</p>";
+                    html += "<p class=\"buy_item_price\">" + item.price + "$</p>";
+                    html += "<button class=\"buy_btn\" id=\"buy_btn_" + item.item + "\">BUY NOW</button></div></div></div>";
+                }
+
+                html += "</div>";
+                document.getElementById("store_items").innerHTML = html;
+            });
+
+            json.forEach(item => {
+                document.getElementById("buy_now_btn_" + item.item).addEventListener("click", () => {
+                    console.log(document.getElementById("buy_menu_" + item.item));
+                    document.getElementById("buy_menu_" + item.item).style.display = "block";
                 });
             });
-        }
 
+            let btnArray = document.getElementsByClassName("buy_close");
+            let divArray = document.getElementsByClassName("buy_menu");
+            for (let i = 0; i < btnArray.length; i++) {
+                for (let j = 0; j < divArray.length; j++) {
+                    btnArray[i].addEventListener("click", () => {
+                        divArray[j].style.display = "none";
+                    });
+                }
+            }
+
+            json.forEach(item => {
+                if (item.stock > 0) {
+                    document.getElementById("buy_btn_" + item.item).addEventListener("click", () => {
+                        console.log(item.id);
+
+                        const data = {
+                            item_id: item.item
+                        };
+                    
+                        const options = {
+                            method: "post",
+                            body: JSON.stringify(data),
+                            headers: {"Content-type":"application/json; charset=UTF-8"}
+                        };
+
+                        fetch("http://localhost:8008/storeItemsBuy", options)
+                        .then(res => res.json)
+                        .then(json => {
+                            console.log("bought item");
+                            console.log(json);
+                        })
+                    });
+                }
+            });
+
+        });
     });
-});
+}
 
-
-let item_array = document.getElementsByClassName("store_item");
-for (let item of item_array) {
-    console.log(item);
+if (lang == "sr") {
+    document.getElementById('search').addEventListener("input", () => {
+        const data = {
+            search: document.getElementById('search').value
+        };
+    
+        const options = {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {"Content-type":"application/json; charset=UTF-8"}
+        };
+    
+    
+        fetch("http://localhost:8008/storeItemsSR", options)
+        .then(res => res.json()) //.json())
+        .then(json => {
+            let html = "";
+            json.forEach(item => {
+                html += "<div class=\"store_item";
+                if (item.stock <= 0) html += " out_of_stock";
+                html += "\">";
+                html += "<p class=\"item_name\">" + item.item_name + "</p>";
+                html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img + "\">";
+                html += "<p class=\"item_description\">" + item.item_description + "</p>";
+                html += "<p class=\"stock_display\">Stock: " + item.stock + "</p>";
+                html += "<button class=\"buy_now\" id=\"buy_now_btn_" + item.item + "\">Buy now</button>";
+                if (item.stock <= 0) html += "<div class=\"out_of_stock_overlay\">OUT OF STOCK</div>";
+    
+                if (item.stock > 0) {
+                    html += "<div class=\"buy_menu\" id=\"buy_menu_" + item.item + "\">";
+                    html += "<div class=\"buy_display\" id=\"buy_display_" + item.id + "\">";
+                    html += "<img src=\"data:image/png;charset=utf-8;base64, " + item.img +"\">";
+                    html += "<button class=\"buy_close\" id=\"buy_close\">X</button>";
+                    html += "<div class=\"buy_float_right\">";
+                    html += "<p class=\"buy_item_name\">" + item.item_name + "</p>";
+                    html += "<p class=\"buy_item_description\">" + item.item_description + "</p>";
+                    html += "<p class=\"buy_item_price\">" + item.price + "$</p>";
+                    html += "<button class=\"buy_btn\" id=\"buy_btn_" + item.item + "\">BUY NOW</button></div></div></div>";
+                }
+    
+                html += "</div>";
+                document.getElementById("store_items").innerHTML = html;
+            });
+    
+            json.forEach(item => {
+                document.getElementById("buy_now_btn_" + item.item).addEventListener("click", () => {
+                    console.log(document.getElementById("buy_menu_" + item.item));
+                    document.getElementById("buy_menu_" + item.item).style.display = "block";
+                });
+            });
+    
+            let btnArray = document.getElementsByClassName("buy_close");
+            let divArray = document.getElementsByClassName("buy_menu");
+            for (let i = 0; i < btnArray.length; i++) {
+                for (let j = 0; j < divArray.length; j++) {
+                    btnArray[i].addEventListener("click", () => {
+                        divArray[j].style.display = "none";
+                    });
+                }
+            }
+    
+            json.forEach(item => {
+                if (item.stock > 0) {
+                    document.getElementById("buy_btn_" + item.item).addEventListener("click", () => {
+                        console.log(item.id);
+    
+                        const data = {
+                            item_id: item.item
+                        };
+                    
+                        const options = {
+                            method: "post",
+                            body: JSON.stringify(data),
+                            headers: {"Content-type":"application/json; charset=UTF-8"}
+                        };
+    
+                        fetch("http://localhost:8008/storeItemsBuy", options)
+                        .then(res => res.json)
+                        .then(json => {
+                            console.log("bought item");
+                            console.log(json);
+                        })
+                    });
+                }
+            });
+    
+        });
+    });
+    
 }

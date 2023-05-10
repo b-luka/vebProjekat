@@ -293,3 +293,14 @@ insert into media_2_html(img, media_type, html_id) values
 (load_file(concat(@startFolder, "aboutPozadina.png")), "png", "aboutBG");
 
 select to_base64(img) as img, media_type, html_id from media_2_html;
+
+create table mail(
+	id int unsigned not null auto_increment,
+    username varchar(50) not null,
+    email varchar(50) not null,
+    message text not null,
+    time_sent text not null,
+    primary key(id)
+);
+
+insert into mail(username, email, message, time_sent) values ("admin", "admin@admin.com", "message test", now());

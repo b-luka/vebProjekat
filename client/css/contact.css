@@ -126,3 +126,61 @@
 .Lokacija{
     text-align: center;
 }
+
+.MessageDiv {
+    width: 1000px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.UsernameInput {
+    width: 700px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid black;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding: 2px;
+}
+
+.EmailInput {
+    width: 700px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid black;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding: 2px;
+}
+
+.MessageInput {
+    width: 700px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid black;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding: 2px;
+}
+
+.SubmitMessage {
+    width: 250px;
+    font-size: 1.6em;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-left: 45%;
+    background-color: rgb(67, 25, 6);
+    color: #cccccc;
+    transition: 0.1s background-color, 0.1s color, 0.1s padding, 0.1s font-size;
+    border: 2px solid rgb(37, 15, 5);
+    border-radius: 10px;
+}
+
+.SubmitMessage:hover {
+    background-color: rgb(104, 36, 5);
+    color: #fff;
+    padding: 5px;
+    font-size: 2.1em;
+}

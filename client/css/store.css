@@ -363,3 +363,11 @@ input {
     float: right;
     margin: 10px;
 }
+
+.buy_menu p {
+    color: #000;
+}
+.buy_item_name {
+    margin-left: 300px;
+    max-width: 75%;
+}

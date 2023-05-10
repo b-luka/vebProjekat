@@ -87,3 +87,30 @@ document.getElementById('lang_sr').addEventListener('click', () => {
         });
     });
 });
+
+document.getElementById("submitMessage").addEventListener("click", () => {
+    let username = document.getElementById("usernameInput").value;
+    let email = document.getElementById("emailInput").value;
+    let message = document.getElementById("messageInput").value;
+
+    if (username != null && username != "" && email != null && email != "" && message != null && message != "") {
+    const data = {
+        username: username,
+        email: email,
+        message: message
+    };
+
+    const options = {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {"Content-type":"application/json; charset=UTF-8"}
+    };
+
+    fetch("http://localhost:8008/postMessage", options)
+        .then(res => res.json())
+        .then(json => {
+            console.log("message sent");
+            console.log(json);
+        });
+    }
+});
